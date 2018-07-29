@@ -42,6 +42,7 @@ public class AdvisorController {
 	public Page<Advisor> getByIdAndDate(@PathVariable int id ,@RequestParam (required=false)Date date, Pageable p){
 		if(date== null){	
 		Date currentdate = new Date() ;
+		currentdate.setDate(currentdate.getDate()-1);
 		System.out.println(currentdate);
 		return advisorRepository.findByIdAndDate(id, currentdate,  p);
 		}else{
